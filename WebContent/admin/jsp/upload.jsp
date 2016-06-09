@@ -7,12 +7,19 @@
 <title>Excel数据上传</title>
 </head>
 <body>
-	<h2>文件批量上传	</h2>
-  	<form action="<%= request.getContextPath()%>/excelUpload" method="post" enctype="multipart/form-data">
-  		上传文件1：<input type="file" name="myfile1"><br>
-  		上传文件2：<input type="file" name="myfile2"><br>
-  		上传文件3：<input type="file" name="myfile3"><br>
-  		<input type="submit" value="提交">${result}
+	<h2>文件批量上传	<form action="<%= request.getContextPath()%>/excelUpload" method="post" enctype="multipart/form-data" style="width: 1094px; position: relative; height: 144px">
+  		上传Excel文件：<input type="file" name="myfile1" style="width: 310px; "><br>
+  		${result}
+  	<input type="submit" value="提交"></form></h2>
+  	
+  	<br>
+  	<br>
+  	<br>
+  	<br>
+  	<h2>数据处理</h2>
+  	<form action="<%= request.getContextPath()%>/excelProcessing" method="post" enctype="multipart/form-data">
+  		<input type="submit" value="开始进行入库数据处理">${result}
+  		<input type="submit" value="开始进行出库数据处理">${result}
   	</form>
 </body>
 </html>

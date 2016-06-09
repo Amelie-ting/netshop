@@ -108,14 +108,22 @@
     <servlet-name>OrderServlet</servlet-name>
     <url-pattern>/orderServlet</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>ExcelUpload</servlet-name>
     <servlet-class>com.netshop.servlet.ExcelUpload</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ExcelUpload</servlet-name>
     <url-pattern>/excelUpload</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>ExcelProcessing</servlet-name>
+    <servlet-class>com.netshop.servlet.ExcelProcessing</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ExcelProcessing</servlet-name>
+    <url-pattern>/excelProcessing</url-pattern>
   </servlet-mapping>
   
   <error-page>
