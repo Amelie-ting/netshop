@@ -47,4 +47,15 @@ public class ItemExcelDaoImpl implements ItemExcelDao {
 		return qr.query(sql, new BeanHandler<Items>(Items.class), barcode);
 	}
 
+	@Override
+	public void sub(Items items) {
+		
+		String stock=items.getItem_stock();
+		String barcode=items.getBarcode();
+		
+		//items.setBarcode(barcode.substring(0,barcode.length()-2));
+		items.setItem_stock(stock.substring(0, stock.length()-2));
+		
+	}
+
 }

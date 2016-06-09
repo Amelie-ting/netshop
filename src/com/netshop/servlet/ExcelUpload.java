@@ -36,8 +36,8 @@ public class ExcelUpload extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//设置上传文件保存路径
+				// TODO Auto-generated method stub
+				//设置上传文件保存路径
 				String filePath = this.getServletContext().getRealPath("/Excel");
 				System.out.println(filePath);
 				File file = new File(filePath);
@@ -66,18 +66,6 @@ public class ExcelUpload extends HttpServlet {
 					result = "上传失败！";
 					e.printStackTrace();
 				}
-				
-				for(int i =0; i < su.getFiles().getCount(); i++){
-					com.jspsmart.upload.File tempFile = su.getFiles().getFile(i);
-					System.out.println("---------------------------");
-					System.out.println("表单当中name属性值：" + tempFile.getFieldName());
-					System.out.println("上传文件名：" + tempFile.getFieldName());
-					System.out.println("上传文件长度:" + tempFile.getSize());
-					System.out.println("上传文件的拓展名：" + tempFile.getFileExt());
-					System.out.println("上传文件的全名：" + tempFile.getFilePathName());
-					System.out.println("---------------------------");
-				}
-				
 				req.setAttribute("result", result);
 				req.getRequestDispatcher("/admin/jsp/upload.jsp").forward(req, resp);
 	}

@@ -17,16 +17,14 @@ public class ExcelTest {
 	public void testRead() throws IOException, SQLException
 	{
 		
-		List<Items> items=controlDao.readXlsCome("C:/Users/lucah/Desktop/excel.xls");
+		List<Items> items=controlDao.readXlsCome("C:/Users/lucah/Desktop/in.xls");
 		System.out.println("work");
 		for (Items newitem:items) {
 			String start1=newitem.getItem_stock();
 			String sub1=start1.substring(0,start1.length()-2);
-			
 			String start2=newitem.getBarcode();
 			String sub2=start2.substring(0,start2.length()-2);
-			
-			System.out.println(sub1+" "+sub2);
+			System.out.println(sub1+" "+start2);
 		}
 	}
 

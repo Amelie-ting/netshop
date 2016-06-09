@@ -116,14 +116,31 @@
     <servlet-name>ExcelUpload</servlet-name>
     <url-pattern>/excelUpload</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>ExcelProcessing</servlet-name>
     <servlet-class>com.netshop.servlet.ExcelProcessing</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>ExcelProcessing</servlet-name>
     <url-pattern>/excelProcessing</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>InUpServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.Excel.InUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InUpServlet</servlet-name>
+    <url-pattern>/inUpServlet</url-pattern>
+  </servlet-mapping>
+  
+      <servlet>
+    <servlet-name>InProServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.Excel.InProServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>InProServlet</servlet-name>
+    <url-pattern>/inProServlet</url-pattern>
   </servlet-mapping>
   
   <error-page>

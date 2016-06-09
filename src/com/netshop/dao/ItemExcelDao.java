@@ -2,6 +2,8 @@ package com.netshop.dao;
 
 import java.sql.SQLException;
 
+import org.apache.xmlbeans.impl.xb.xmlconfig.NamespaceList.Member2.Item;
+
 import com.netshop.model.Items;
 
 
@@ -38,5 +40,11 @@ public interface ItemExcelDao {
 	 * @throws SQLException 
 	 */
 	public Items findStock(String barcode) throws SQLException ;
+	
+	/**
+	 * 用于截取从excel表格中获得的数据
+	 * @param items
+	 */
+	public void sub(Items items);
 	
 }
