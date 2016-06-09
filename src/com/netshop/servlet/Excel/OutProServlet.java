@@ -63,7 +63,7 @@ public class OutProServlet extends HttpServlet {
 					String name=ex.getBarcode();
 					result="执行失败出库数量有错误，"+"错误商品条形码为:"+name;
 					req.setAttribute("result2", result);
-					req.getRequestDispatcher("/admin/outStorage.jsp").forward(req, resp);
+					req.getRequestDispatcher("/adminjsps/admin/storage/storage.jsp").forward(req, resp);
 					return ;
 				}
 				//字符型的总数量，赋值给ex
@@ -79,8 +79,8 @@ public class OutProServlet extends HttpServlet {
 		}
 		
 		result="执行成功";
-		req.setAttribute("result2", result);
-		req.getRequestDispatcher("/admin/outStorage.jsp").forward(req, resp);
+		req.setAttribute("result3", result);
+		req.getRequestDispatcher("/adminjsps/admin/storage/storage.jsp").forward(req, resp);
 	}
 
 	/**

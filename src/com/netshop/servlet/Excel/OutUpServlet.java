@@ -59,8 +59,8 @@ public class OutUpServlet extends HttpServlet {
 					result = "ÉÏ´«Ê§°Ü£¡";
 					e.printStackTrace();
 				}
-				req.setAttribute("result", result);
-				req.getRequestDispatcher("/admin/outStorage.jsp").forward(req, resp);
+				req.setAttribute("result4", result);
+				req.getRequestDispatcher("/adminjsps/admin/storage/storage.jsp").forward(req, resp);
 	}
 
 	/**

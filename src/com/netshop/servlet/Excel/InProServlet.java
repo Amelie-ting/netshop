@@ -76,7 +76,7 @@ public class InProServlet extends HttpServlet {
 		}
 		result="Ö´ÐÐ³É¹¦";
 		req.setAttribute("result2", result);
-		req.getRequestDispatcher("/admin/inStorage.jsp").forward(req, resp);
+		req.getRequestDispatcher("/adminjsps/admin/storage/storage.jsp").forward(req, resp);
 		
 	}
 

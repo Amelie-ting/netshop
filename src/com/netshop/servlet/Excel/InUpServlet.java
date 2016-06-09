@@ -31,7 +31,7 @@ public class InUpServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		//设置上传文件保存路径
 		String filePath = this.getServletContext().getRealPath("/Excel");
-		System.out.println(filePath);
+		
 		File file = new File(filePath);
 		if(!file.exists()){
 			file.mkdir();
@@ -58,8 +58,8 @@ public class InUpServlet extends HttpServlet {
 			result = "上传失败！";
 			e.printStackTrace();
 		}
-		req.setAttribute("result", result);
-		req.getRequestDispatcher("/admin/inStorage.jsp").forward(req, resp);
+		req.setAttribute("result1", result);
+		req.getRequestDispatcher("/adminjsps/admin/storage/storage.jsp").forward(req, resp);
 		
 	}
 
