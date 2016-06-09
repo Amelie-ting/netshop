@@ -139,9 +139,8 @@
   <servlet-mapping>
     <servlet-name>InProServlet</servlet-name>
     <url-pattern>/inProServlet</url-pattern>
-  </servlet-mapping>  
-  
-     <servlet>
+  </servlet-mapping>
+  <servlet>
     <servlet-name>OutUpServlet</servlet-name>
     <servlet-class>com.netshop.servlet.Excel.OutUpServlet</servlet-class>
   </servlet>
@@ -157,7 +156,23 @@
     <servlet-name>OutProServlet</servlet-name>
     <url-pattern>/outProServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AdBookServlet</servlet-name>
+    <servlet-class>com.netshop.admin.servlet.AdBookServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdBookServlet</servlet-name>
+    <url-pattern>/adBookServlet</url-pattern>
+  </servlet-mapping>
   
+    <servlet>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.AdminLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminLoginServlet</servlet-name>
+    <url-pattern>/adminLoginServlet</url-pattern>
+  </servlet-mapping>
   
   <error-page>
     <error-code>404</error-code>

@@ -36,11 +36,11 @@ $(function() {
 	3. /goods/jsps/book/list.jsp：点击二级分类后链接到的URL
 	4. body:链接的内容在哪个框架页中显示
 	*/
-<c:forEach items="${parents}" var="parent">
-  <c:forEach items="${parent.children}" var="child">
-	bar.add("${parent.cname}", "${child.cname}", "/goods/admin/AdminBookServlet?method=findByCategory&cid=${child.cid}", "body");
-  </c:forEach>
-</c:forEach>
+	<c:forEach items="${parents}" var="parents">
+	  <c:forEach items="${parents.children}" var="child">
+		bar.add("${parents.ca_name}", "${child.ca_name}", "/netstore/itemServlet?method=findByCategory&ca_id=${child.ca_id}", "body");
+	  </c:forEach>
+	</c:forEach>
 	
 	$("#menu").html(bar.toString());
 });
