@@ -4,11 +4,12 @@ import java.sql.SQLException;
 
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
+
 import org.junit.Test;
 
 import com.netshop.jdbc.DAO;
 import com.netshop.model.Items;
-import com.netshop.model.User;
+
 
 public class AdminTest {
 	private QueryRunner qr = new DAO();
@@ -26,39 +27,37 @@ public class AdminTest {
 		//找到就是1，找不到就是0
 		return number.intValue() > 0;
 	}
-	
 	/**
 	 * 插入方法
 	 * 用于在条形码不存在的情况啊，直接新建一个商品
 	 * @throws SQLException
 	 */
 	public void insert(Items items) throws SQLException{
-		String sql = "insert into items(barcode，item_come) values(?,?)";
-		int num=items.getItem_come();
+		String sql = "insert into items(barcode，item_stock) values(?,?)";
+		String num=items.getItem_stock();
 		String code=items.getBarcode();
 		Object[] params = {code,num};
 		qr.update(sql, params);
 	}
-	
 	/**
 	 * 更新方法
 	 * 用于如果条形码存在的情况下，添加数量
 	 * @throws SQLException 
 	 */
 	public void update(Items items) throws SQLException{
-		String sql ="update items set item_come=? where barcode= ?";
-		int num=items.getItem_come();
+		String sql ="update items set item_stock=? where barcode= ?";
+		
 		String code=items.getBarcode();
-		Object[] params = {num,code};
+		Object[] params = {code,items.getItem_stock()};
 		qr.update(sql, params);
 	}
-	
 	@Test
 	public void testUpdateandCheck() throws SQLException{
 		Items items=new Items();
-		items.setBarcode("12345678910");
-		items.setItem_come(10);
+		items.setBarcode("123456789");
+		items.setItem_stock("1");
 		boolean rs=checkQuery(items.getBarcode());
+		System.out.println(rs);
 		if (rs) {
 			update(items);
 			System.out.println("更新成功");
@@ -67,8 +66,7 @@ public class AdminTest {
 			insert(items);
 			System.out.println("插入成功");
 		}
+		
+		
 	}
-	
-	
-	
 }

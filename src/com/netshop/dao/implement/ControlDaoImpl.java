@@ -53,7 +53,7 @@ public class ControlDaoImpl implements ControlDao {
 					
 					items.setBarcode(getValue(no));
 					
-					items.setItem_come(Integer.valueOf(getValue(num)));
+					items.setItem_stock(getValue(num));
 					
 					list.add(items);
 				}
@@ -94,7 +94,7 @@ public class ControlDaoImpl implements ControlDao {
 							//获取数量
 							HSSFCell num = hssfRow.getCell(1);
 							items.setBarcode(getValue(no));
-							items.setItem_go(Integer.valueOf(getValue(num)));
+							items.setItem_stock(getValue(num));
 							list.add(items);
 						}
 					}

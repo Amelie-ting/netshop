@@ -39,6 +39,7 @@ public class ExcelUpload extends HttpServlet {
 		// TODO Auto-generated method stub
 		//设置上传文件保存路径
 				String filePath = this.getServletContext().getRealPath("/Excel");
+				System.out.println(filePath);
 				File file = new File(filePath);
 				if(!file.exists()){
 					file.mkdir();

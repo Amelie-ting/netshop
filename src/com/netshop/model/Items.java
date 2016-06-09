@@ -17,38 +17,27 @@ public class Items {
 	private String item_pic;// 图片
 	private double purprice;// 进货价
 	private String barcode;// 条形码
-	private int item_come;//入库数量
-	private int item_go;//出库数量
-	private int item_stock;//库存数量
+	
+	private String item_stock;//库存数量
 	
 	
 	public String getItem_pic() {
 		return item_pic;
 	}
 
-	public int getItem_come() {
-		return item_come;
-	}
+	
 
-	public void setItem_come(int item_come) {
-		this.item_come = item_come;
-	}
-
-	public int getItem_go() {
-		return item_go;
-	}
-
-	public void setItem_go(int item_go) {
-		this.item_go = item_go;
-	}
-
-	public int getItem_stock() {
+	public String getItem_stock() {
 		return item_stock;
 	}
 
-	public void setItem_stock(int item_stock) {
+
+
+	public void setItem_stock(String item_stock) {
 		this.item_stock = item_stock;
 	}
+
+
 
 	public void setItem_pic(String item_pic) {
 		this.item_pic = item_pic;
