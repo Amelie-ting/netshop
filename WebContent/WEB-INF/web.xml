@@ -124,8 +124,7 @@
     <servlet-name>ExcelProcessing</servlet-name>
     <url-pattern>/excelProcessing</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>InUpServlet</servlet-name>
     <servlet-class>com.netshop.servlet.Excel.InUpServlet</servlet-class>
   </servlet>
@@ -133,15 +132,32 @@
     <servlet-name>InUpServlet</servlet-name>
     <url-pattern>/inUpServlet</url-pattern>
   </servlet-mapping>
-  
-      <servlet>
+  <servlet>
     <servlet-name>InProServlet</servlet-name>
     <servlet-class>com.netshop.servlet.Excel.InProServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>InProServlet</servlet-name>
     <url-pattern>/inProServlet</url-pattern>
+  </servlet-mapping>  
+  
+     <servlet>
+    <servlet-name>OutUpServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.Excel.OutUpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OutUpServlet</servlet-name>
+    <url-pattern>/outUpServlet</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>OutProServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.Excel.OutProServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OutProServlet</servlet-name>
+    <url-pattern>/outProServlet</url-pattern>
+  </servlet-mapping>
+  
   
   <error-page>
     <error-code>404</error-code>
