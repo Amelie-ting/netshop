@@ -24,7 +24,7 @@
   <body style="background: rgb(78,78,78);color: #fff;">
 <h1 style="text-align: center; line-height: 30px;">传智播客网上书城系统后台管理</h1>
 <div style="line-height: 10px;">
-	<span>管理员：${sessionScope.admin.adminname }</span>
+	<span>管理员：${sessionScope.admin.a_name }</span>
 	<a target="_top" href="<c:url value='/adminjsps/login.jsp'/>">退出</a>
 	<span style="padding-left:50px;">
 		<a href="<c:url value='/admin/AdminCategoryServlet?method=findAll'/>">分类管理</a>

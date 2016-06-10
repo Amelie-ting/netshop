@@ -164,16 +164,14 @@
     <servlet-name>AdBookServlet</servlet-name>
     <url-pattern>/adBookServlet</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
-    <servlet-name>AdminLoginServlet</servlet-name>
-    <servlet-class>com.netshop.servlet.AdminLoginServlet</servlet-class>
+  <servlet>
+    <servlet-name>AdLoginServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.AdLoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdminLoginServlet</servlet-name>
-    <url-pattern>/adminLoginServlet</url-pattern>
+    <servlet-name>AdLoginServlet</servlet-name>
+    <url-pattern>/adLoginServlet</url-pattern>
   </servlet-mapping>
-  
   <error-page>
     <error-code>404</error-code>
     <location>/404error.jsp</location>

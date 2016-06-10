@@ -11,14 +11,14 @@ public class UserDaoImpltext {
 	private UserDao userDAO = new UserDaoImpl();
 
 
-//	@Test
-//
-//	public void findByLoginnameAndnpass() throws SQLException {
-//		User u=new User();
-//		u=userDAO.findByLoginnameAndnpass("xiaoming", "111111");
-//		System.out.println(u.getU_name());
-//	}
-//
+	@Test
+
+	public void findByLoginnameAndnpass() throws SQLException {
+		User u=new User();
+		u=userDAO.findByLoginnameAndnpass("han", "123");
+		System.out.println(u.getU_name());
+	}
+
 //	public void testSave() throws SQLException {
 //		User cust = new User();
 //		cust.setU_name("");
