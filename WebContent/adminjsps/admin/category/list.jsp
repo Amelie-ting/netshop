@@ -26,14 +26,14 @@
     	</caption>
     	<tr class="trTitle">
     		<th>分类名称</th>
-    		<th>描述</th>
+    		
     		<th>操作</th>
     	</tr>
     	
 <c:forEach items="${parents }" var="parent">    	
     	<tr class="trOneLevel">
     		<td width="200px;">${parent.ca_name}</td>
-    		<td></td>
+    	
     		<td width="200px;">
     		  <a href="<c:url value='/admin/AdminCategoryServlet?method=addChildPre&pid=${parent.ca_id }'/>">添加二级分类</a>
     		  <a href="<c:url value='/admin/AdminCategoryServlet?method=editParentPre&cid=${parent.ca_id }'/>">修改</a>
@@ -43,7 +43,7 @@
    <c:forEach items="${parent.children }" var="child">
     	<tr class="trTwoLevel">
     		<td>${child.ca_name }</td>
-    		<td></td>
+    		
     		<td width="200px;" align="right">
     		  <a href="<c:url value='/admin/AdminCategoryServlet?method=editChildPre&cid=${child.ca_id }'/>">修改</a>
     		  <a onclick="return confirm('您是否真要删除该二级分类？')" href="<c:url value='/admin/AdminCategoryServlet?method=deleteChild&cid=${child.ca_id }'/>">删除</a>

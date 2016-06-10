@@ -116,7 +116,7 @@ public class CategoryDaoImpl implements CategoryDao {
 	 */
 	@Override
 	public void add(Category category) throws SQLException {
-		String sql = "insert into category(ca_id,ca_ame,ca_pid) values(?,?,?)";
+		String sql = "insert into category(ca_id,ca_name,ca_pid) values(?,?,?)";
 		/*
 		 * 因为一级分类，没有parent，而二级分类有！ 我们这个方法，要兼容两次分类，所以需要判断
 		 */
