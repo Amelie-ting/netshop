@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
 
 import com.netshop.commons.CommonUtils;
@@ -125,6 +126,24 @@ public class CategoryDaoImpl implements CategoryDao {
 			pid = category.getParent().getCa_id();
 		}
 		Object[] params = { category.getCa_id(), category.getCa_name(), pid };
+		qr.update(sql, params);
+	}
+
+	
+	@Override
+	public Category load(String ca_id) throws SQLException {
+		String sql = "select * from category where ca_id=?";
+		return toCategory(qr.query(sql, new MapHandler(), ca_id));
+	}
+
+	@Override
+	public void edit(Category category) throws SQLException {
+		String sql = "update category set ca_name=?, ca_pid=?  where ca_id=?";
+		String pid = null;
+		if(category.getParent() != null) {
+			pid = category.getParent().getCa_id();
+		}
+		Object[] params = {category.getCa_name(), pid, category.getCa_id()};
 		qr.update(sql, params);
 	}
 

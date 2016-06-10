@@ -17,4 +17,22 @@ public interface CategoryDao {
     
 	//获取所有父分类，但不带子分类的
 	public List<Category> findParents() throws SQLException;
+	
+	/**
+	 * 加载分类信息
+	 * 既可以加载一级分类，又可以加载二级分类
+	 * @param ca_id
+	 * @return
+	 * @throws SQLException 
+	 */
+	public Category load(String ca_id) throws SQLException;
+	
+	/**
+	 * 分类修改的方法
+	 * 一级和二级分类都能处理
+	 * @param category
+	 * @return
+	 * @throws SQLException 
+	 */
+	public void edit(Category category) throws SQLException;
 }

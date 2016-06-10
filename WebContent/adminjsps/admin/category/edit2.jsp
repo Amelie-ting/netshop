@@ -25,10 +25,7 @@
 				alert("一级分类不能为空！");
 				return false;
 			}
-			if(!$("#desc").val()) {
-				alert("分类描述不能为空！");
-				return false;
-			}
+
 			return true;
 		}
 	</script>
@@ -41,17 +38,17 @@
     <h3>修改2级分类</h3>
     <h1></h1>
     <p style="font-weight: 900; color: red">${msg }</p>
-    <form action="<c:url value='/admin/AdminCategoryServlet'/>" method="post" onsubmit="return checkForm()">
+    <form action="<c:url value='/admin/AdCategoryServlet'/>" method="post" onsubmit="return checkForm()">
     	<input type="hidden" name="method" value="editChild"/>
-    	<input type="hidden" name="cid" value="${child.cid }"/>
-    	分类名称：<input type="text" name="cname" value="${child.cname }" id="cname"/><br/>
+    	<input type="hidden" name="ca_id" value="${child.ca_id }"/>
+    	分类名称：<input type="text" name="ca_name" value="${child.ca_name }" id="cname"/><br/>
     	一级分类：<select name="pid" id="pid">
     		<option value="">===选择1级分类===</option>
 <c:forEach items="${parents }" var="parent">
-    		<option value="${parent.cid }" <c:if test="${parent.cid eq child.parent.cid }">selected="selected"</c:if> >${parent.cname }</option>
+    		<option value="${parent.ca_id }" <c:if test="${parent.ca_id eq child.parent.ca_id }">selected="selected"</c:if> >${parent.ca_name }</option>
 </c:forEach>
     	</select><br/>
-    	分类描述：<textarea rows="5" cols="50" name="desc" id="desc">${child.desc }</textarea><br/>
+    	
     	<input type="submit" value="修改二级分类"/>
     	<input type="button" value="返回" onclick="history.go(-1)"/>
     </form>

@@ -60,4 +60,24 @@ public class CategoryServiceImpl implements CategoryService {
 		}
 	}
 
+	@Override
+	public void edit(Category category) {
+		try {
+			categoryDao.edit(category);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public Category load(String ca_id) {
+		try {
+			return categoryDao.load(ca_id);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+	}
+
 }

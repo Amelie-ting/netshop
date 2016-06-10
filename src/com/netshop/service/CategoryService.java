@@ -12,5 +12,9 @@ public interface CategoryService {
 	public List<Category> findParents();
 
 	public List<Category> findChildren(String pid);
+	
+	public void edit(Category category);
+	
+	public Category load(String ca_id);
 
 }
