@@ -16,5 +16,9 @@ public interface CategoryService {
 	public void edit(Category category);
 	
 	public Category load(String ca_id);
+	
+	public int findChildrenCountByParent(String pid) ;
+	
+	public void delete(String cid);
 
 }

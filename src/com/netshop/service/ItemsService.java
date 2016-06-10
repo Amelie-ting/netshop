@@ -22,4 +22,7 @@ public interface ItemsService {
 
 	// 按商品类别id加载商品
 	public List<Items> findByCategory(int cid);
+	
+	//查询二级分类下的商品个数
+	public int findBookCountByCategory(String cid) ;
 }

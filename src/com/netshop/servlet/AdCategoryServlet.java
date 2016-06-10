@@ -14,7 +14,9 @@ import com.netshop.dao.CategoryDao;
 import com.netshop.dao.implement.CategoryDaoImpl;
 import com.netshop.model.Category;
 import com.netshop.service.CategoryService;
+import com.netshop.service.ItemsService;
 import com.netshop.service.implement.CategoryServiceImpl;
+import com.netshop.service.implement.ItemsServiceImpl;
 
 /**
  * Servlet implementation class AdCategoryServlet
@@ -27,6 +29,8 @@ public class AdCategoryServlet extends BaseServlet {
 	private CategoryService categoryService = new CategoryServiceImpl();
 	
 	private CategoryDao categoryDao=new CategoryDaoImpl();
+	
+	private ItemsService itemsService=new ItemsServiceImpl();
 
 	/**
 	 * 查询所有分类
@@ -155,6 +159,57 @@ public class AdCategoryServlet extends BaseServlet {
 		categoryService.edit(child);
 		return findAll(req, resp);
 	}
+	/**
+	 * 删除一级分类
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public String deleteParent(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		/*
+		 * 1. 获取链接参数cid，它是一个1级分类的id
+		 * 2. 通过cid，查看该父分类下子分类的个数
+		 * 3. 如果大于零，说明还有子分类，不能删除。保存错误信息，转发到msg.jsp
+		 * 4. 如果等于零，删除之，返回到list.jsp
+		 */
+		String cid = req.getParameter("cid");
+		int cnt = categoryService.findChildrenCountByParent(cid);
+		if(cnt > 0) {
+			req.setAttribute("msg", "该分类下还有子分类，不能删除！");
+			return "f:/adminjsps/msg.jsp";
+		} else {
+			categoryService.delete(cid);
+			return findAll(req, resp);
+		}
+	}
 	
-
+	/**
+	 * 删除2级分类
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public String deleteChild(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		/*
+		 * 1. 获取cid，即2级分类id
+		 * 2. 获取该分类下的图书个数
+		 * 3. 如果大于零，保存错误信息，转发到msg.jsp
+		 * 4. 如果等于零，删除之，返回到list.jsp
+		 */
+		String cid = req.getParameter("cid");
+		int cnt = itemsService.findBookCountByCategory(cid);
+		if(cnt > 0) {
+			req.setAttribute("msg", "该分类下还存在图书，不能删除！");
+			return "f:/adminjsps/msg.jsp";
+		} else {
+			categoryService.delete(cid);
+			return findAll(req, resp);
+		}
+	}
 }

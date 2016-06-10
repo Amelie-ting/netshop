@@ -35,4 +35,22 @@ public interface CategoryDao {
 	 * @throws SQLException 
 	 */
 	public void edit(Category category) throws SQLException;
+	
+	
+	/**
+	 * 查询指定父分类下子分类的个数
+	 * @param pid
+	 * @return
+	 * @throws SQLException 
+	 */
+	public int findChildrenCountByParent(String pid) throws SQLException;
+	
+	
+	/**
+	 * 删除分类
+	 * @param cid
+	 * @throws SQLException 
+	 */
+	public void delete(String cid) throws SQLException ;
+	
 }

@@ -8,6 +8,7 @@ import java.util.Map;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.MapHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import com.netshop.commons.CommonUtils;
 import com.netshop.dao.CategoryDao;
@@ -145,6 +146,21 @@ public class CategoryDaoImpl implements CategoryDao {
 		}
 		Object[] params = {category.getCa_name(), pid, category.getCa_id()};
 		qr.update(sql, params);
+	}
+
+
+	@Override
+	public int findChildrenCountByParent(String pid) throws SQLException {
+		String sql = "select count(*) from category where ca_pid=?";
+		Number cnt = (Number)qr.query(sql, new ScalarHandler(), pid);
+		return cnt == null ? 0 : cnt.intValue();
+	}
+
+	@Override
+	public void delete(String cid) throws SQLException {
+		String sql = "delete from category where ca_id=?";
+		qr.update(sql, cid);
+		
 	}
 
 }

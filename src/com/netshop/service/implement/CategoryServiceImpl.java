@@ -80,4 +80,26 @@ public class CategoryServiceImpl implements CategoryService {
 		}
 	}
 
+	@Override
+	public int findChildrenCountByParent(String pid) {
+		try {
+			return categoryDao.findChildrenCountByParent(pid);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public void delete(String cid) {
+		try {
+			categoryDao.delete(cid);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+		
+		
+	}
+
 }

@@ -30,5 +30,14 @@ public interface ItemsDao {
 
 	// 按分类id查找
 	public List<Items> findByCategory(int cid) throws SQLException;
+	
+	
+	/**
+	 * 查询指定分类下商品的个数
+	 * @param cid
+	 * @return
+	 * @throws SQLException
+	 */
+	public int findBookCountByCategory(String cid) throws SQLException ;
 
 }

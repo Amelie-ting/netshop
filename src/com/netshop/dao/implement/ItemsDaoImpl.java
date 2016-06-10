@@ -31,21 +31,6 @@ import com.netshop.pager.PageConstants;
 public class ItemsDaoImpl implements ItemsDao {
 	private QueryRunner qr = new DAO();
 
-	// /**
-	// * 按商品名模糊查询（分页）
-	// *
-	// * @param iname
-	// * @param pc
-	// * @return
-	// * @throws SQLException
-	// */
-	// @Override
-	// public PageBean<Items> findByItemname(String iname, int pc) throws
-	// SQLException {
-	// List<Expression> exprList = new ArrayList<Expression>();
-	// exprList.add(new Expression("item_name", "like", "%" + iname + "%"));
-	// return findByCriteria(exprList, pc);
-	// }
 	/**
 	 * 按商品名模糊查询
 	 * 
@@ -177,5 +162,12 @@ public class ItemsDaoImpl implements ItemsDao {
 		Object[] params = { item.getItem_name(), item.getItem_caid(), item.getItem_gdate(), item.getItem_descn(),
 				item.getItem_price(), item.getPurprice(), item.getItem_wid(), item.getItem_pic() };
 		qr.update(sql, params);
+	}
+
+	@Override
+	public int findBookCountByCategory(String cid) throws SQLException {
+		String sql = "select count(*) from items where item_caid=?";
+		Number cnt = (Number)qr.query(sql, new ScalarHandler(), cid);
+		return cnt == null ? 0 : cnt.intValue();
 	}
 }

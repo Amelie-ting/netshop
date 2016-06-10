@@ -82,4 +82,15 @@ public class ItemsServiceImpl implements ItemsService {
 			throw new RuntimeException(e);
 		}
 	}
+
+	@Override
+	public int findBookCountByCategory(String cid) {
+		
+		try {
+			return itemsDao.findBookCountByCategory(cid);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+	}
 }
