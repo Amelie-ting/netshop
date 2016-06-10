@@ -172,6 +172,16 @@
     <servlet-name>AdLoginServlet</servlet-name>
     <url-pattern>/adLoginServlet</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>AdCategoryServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.AdCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdCategoryServlet</servlet-name>
+    <url-pattern>/admin/AdCategoryServlet</url-pattern>
+  </servlet-mapping>
+  
   <error-page>
     <error-code>404</error-code>
     <location>/404error.jsp</location>
