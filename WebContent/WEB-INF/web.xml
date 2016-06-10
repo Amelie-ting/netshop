@@ -172,14 +172,22 @@
     <servlet-name>AdLoginServlet</servlet-name>
     <url-pattern>/adLoginServlet</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>AdCategoryServlet</servlet-name>
     <servlet-class>com.netshop.servlet.AdCategoryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>AdCategoryServlet</servlet-name>
     <url-pattern>/admin/AdCategoryServlet</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>AdItemServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.AdItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdItemServlet</servlet-name>
+    <url-pattern>/admin/AdItemServlet</url-pattern>
   </servlet-mapping>
   
   <error-page>

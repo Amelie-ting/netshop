@@ -98,39 +98,32 @@ function editForm() {
     <br/>
     <br/>
   <div id="show">
-    <div class="sm">${book.bname }</div>
-    <img align="top" src="<c:url value='/${book.image_w }'/>" class="tp"/>
+    <div class="sm">${item.item_name }</div>
+    <img align="top" src="<c:url value='/${item.item_pic }'/>" class="tp"/>
     <div id="book" style="float:left;">
 	    <ul>
-	    	<li>商品编号：${book.bid }</li>
-	    	<li>当前价：<span class="price_n">&yen;${book.currPrice }</span></li>
-	    	<li>定价：<span style="text-decoration:line-through;">&yen;${book.price }</span>　折扣：<span style="color: #c30;">${book.discount }</span>折</li>
+	    	<li>商品编号：${item.item_id }</li>
+	    	<li>当前价：<span class="price_n">&yen;${item.item_price }</span></li>
 	    </ul>
 		<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
 		<table class="tab">
 			<tr>
-				<td colspan="3">
-					作者：${book.author }著
-				</td>
+			    <td colspan="3"><h3>商品描述</h3></td>
 			</tr>
-			<tr>
-				<td colspan="3">
-					出版社：${book.press }</a>
-				</td>
-			</tr>
-			<tr>
-				<td colspan="3">出版时间：${book.publishtime }</td>
-			</tr>
-			<tr>
-				<td>版次：${book.edition }</td>
-				<td>页数：${book.pageNum }</td>
-				<td>字数：${book.wordNum }</td>
-			</tr>
-			<tr>
-				<td width="180">印刷时间：${book.printtime }</td>
-				<td>开本：${book.booksize }开</td>
-				<td>纸张：${book.paper }</td>
-			</tr>
+				<tr>
+					<td colspan="3"> ${item.item_descn}</td>
+				</tr>
+				<tr>
+					<td colspan="3"></td>
+				</tr>
+<!-- 				<tr> -->
+<%-- 					<td colspan="3">生产日期：${item.item_gdate}</td> --%>
+<!-- 				</tr> -->
+				<tr>
+					<td width="180"></td>
+					<td></td>
+					<td></td>
+				</tr>
 		</table>
 	</div>
   </div>
@@ -141,39 +134,23 @@ function editForm() {
    <form action="<c:url value='/admin/AdminBookServlet'/>" method="post" id="form">
     <input type="hidden" name="method" id="method"/>
    	<input type="hidden" name="bid" value="${book.bid }"/>
-    <img align="top" src="<c:url value='/${book.image_w }'/>" class="tp"/>
+    <img align="top" src="<c:url value='/${item.item_pic }'/>" class="tp"/>
     <div style="float:left;">
 	    <ul>
-	    	<li>商品编号：${book.bid }</li>
-	    	<li>书名：　<input id="bname" type="text" name="bname" value="${book.bname }" style="width:500px;"/></li>
-	    	<li>当前价：<input id="currPrice" type="text" name="currPrice" value="${book.currPrice }" style="width:50px;"/></li>
-	    	<li>定价：　<input id="price" type="text" name="price" value="${book.price }" style="width:50px;"/>
-	    	折扣：<input id="discount" type="text" name="discount" value="${book.discount }" style="width:30px;"/>折</li>
+	    	<li>书名：　<input id="bname" type="text" name="bname" value="${item.item_name }" style="width:500px;"/></li>
+	    	<li>当前价：<input id="currPrice" type="text" name="currPrice" value="${item.item_price }" style="width:50px;"/></li>
 	    </ul>
 		<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
 		<table class="tab">
 			<tr>
 				<td colspan="3">
-					作者：　　<input id="author" type="text" name="author" value="${book.author }" style="width:150px;"/>
+					<h3>商品描述</h3>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="3">
-					出版社：　<input id="press" type="text" name="press" value="${book.press }" style="width:200px;"/>
+				<input id="press" type="text" name="press" value="${item.item_descn}" style="width:200px;"/>
 				</td>
-			</tr>
-			<tr>
-				<td colspan="3">出版时间：<input id="publishtime" type="text" name="publishtime" value="${book.publishtime }" style="width:100px;"/></td>
-			</tr>
-			<tr>
-				<td>版次：　　<input id="edition" type="text" name="edition" value="${book.edition }" style="width:40px;"/></td>
-				<td>页数：　　<input id="pageNum" type="text" name="pageNum" value="${book.pageNum }" style="width:50px;"/></td>
-				<td>字数：　　<input id="wordNum" type="text" name="wordNum" value="${book.wordNum }" style="width:80px;"/></td>
-			</tr>
-			<tr>
-				<td width="250px">印刷时间：<input id="printtime" type="text" name="printtime" value="${book.printtime }" style="width:100px;"/></td>
-				<td width="250px">开本：　　<input id="booksize" type="text" name="booksize" value="${book.booksize }" style="width:30px;"/></td>
-				<td>纸张：　　<input id="paper" type="text" name="paper" value="${book.paper }" style="width:80px;"/></td>
 			</tr>
 			<tr>
 				<td>
