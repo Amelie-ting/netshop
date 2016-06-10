@@ -15,6 +15,7 @@ public interface CategoryDao {
 	//通过父分类查询子分类
 	public List<Category> findByParent(String pid) throws SQLException;
     
+	
 	//获取所有父分类，但不带子分类的
 	public List<Category> findParents() throws SQLException;
 	
@@ -52,5 +53,9 @@ public interface CategoryDao {
 	 * @throws SQLException 
 	 */
 	public void delete(String cid) throws SQLException ;
+	
+	
+	
+
 	
 }

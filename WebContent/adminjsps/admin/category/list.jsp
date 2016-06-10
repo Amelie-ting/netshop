@@ -35,7 +35,7 @@
     		<td width="200px;">${parent.ca_name}</td>
     	
     		<td width="200px;">
-    		  <a href="<c:url value='/admin/AdminCategoryServlet?method=addChildPre&pid=${parent.ca_id }'/>">添加二级分类</a>
+    		  <a href="<c:url value='/admin/AdCategoryServlet?method=addChildPre&pid=${parent.ca_id }'/>">添加二级分类</a>
     		  <a href="<c:url value='/admin/AdCategoryServlet?method=editParentPre&cid=${parent.ca_id }'/>">修改</a>
     		  <a onclick="return confirm('您是否真要删除该一级分类？')" href="<c:url value='/admin/AdCategoryServlet?method=deleteParent&cid=${parent.ca_id }'/>">删除</a>
     		</td>

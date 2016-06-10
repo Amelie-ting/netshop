@@ -212,4 +212,52 @@ public class AdCategoryServlet extends BaseServlet {
 			return findAll(req, resp);
 		}
 	}
+	
+	/**
+	 * 添加第二分类：第一步
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public String addChildPre(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String pid = req.getParameter("pid");//当前点击的父分类id
+		List<Category> parents = categoryService.findParents();
+		req.setAttribute("pid", pid);
+		req.setAttribute("parents", parents);
+		
+		return "f:/adminjsps/admin/category/add2.jsp";
+	}
+	/**
+	 * 添加第二分类，第二步
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public String addChild(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		/*
+		 * 1. 封装表单数据到Category中
+		 * 2. 需要手动的把表单中的pid映射到child对象中
+		 * 2. 调用service的add()方法完成添加
+		 * 3. 调用findAll()，返回list.jsp显示所有分类
+		 */
+		Category child = CommonUtils.toBean(req.getParameterMap(), Category.class);
+		child.setCa_id(CommonUtils.uuid());//设置cid
+		
+		// 手动映射pid
+		String pid = req.getParameter("pid");
+		Category parent = new Category();
+		parent.setCa_id(pid);
+		child.setParent(parent);
+		
+		categoryService.add(child);
+		return findAll(req, resp);
+	}
+	
+	
 }
