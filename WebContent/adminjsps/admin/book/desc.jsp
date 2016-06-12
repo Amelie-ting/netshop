@@ -165,7 +165,7 @@ function editForm() {
 					二级分类：<select name="cid" id="cid">
 						<option value="">==请选择2级分类==</option>
 <c:forEach items="${children }" var="child">
-  <option value="${child.cid }" <c:if test="${book.category.cid eq child.cid }">selected="selected"</c:if>>${child.cname }</option>
+  <option value="${child.ca_id }" <c:if test="${book.category.cid eq child.cid }">selected="selected"</c:if>>${child.cname }</option>
 </c:forEach>
 					</select>
 				</td>

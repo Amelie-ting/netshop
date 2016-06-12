@@ -74,16 +74,18 @@ function loadChildren() {
 	*/
 	// 1. 获取pid
 	var pid = $("#pid").val();
+	
 	// 2. 发送异步请求
 	$.ajax({
 		async:true,
 		cache:false,
-		url:"/goods/admin/AdminBookServlet",
+		url:"/netshop/admin/AdminItemServlet",
 		data:{method:"ajaxFindChildren", pid:pid},
 		type:"POST",
 		dataType:"json",
 		success:function(arr) {
 			// 3. 得到cid，删除它的内容
+			//alter("成功");
 			$("#cid").empty();//删除元素的子元素
 			$("#cid").append($("<option>====请选择2级分类====</option>"));//4.添加头
 			// 5. 循环遍历数组，把每个对象转换成<option>添加到cid中
@@ -91,7 +93,11 @@ function loadChildren() {
 				var option = $("<option>").val(arr[i].cid).text(arr[i].cname);
 				$("#cid").append(option);
 			}
+		},
+		error:function(arr) {
+			alert("有错误");
 		}
+		
 	});
 }
 
@@ -101,7 +107,7 @@ function loadChildren() {
   <body>
   <div>
    <p style="font-weight: 900; color: red;">${msg }</p>
-   <form action="<c:url value='/admin/AdminAddBookServlet'/>" enctype="multipart/form-data" method="post" id="form">
+   <form action="<c:url value='/admin/AdminItemServlet'/>" enctype="multipart/form-data" method="post" id="form">
     <div>
 	    <ul>
 	    	<li>书名：　<input id="bname" type="text" name="bname" value="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" style="width:500px;"/></li>
@@ -141,7 +147,7 @@ function loadChildren() {
 					一级分类：<select name="pid" id="pid" onchange="loadChildren()">
 						<option value="">====请选择1级分类====</option>
 <c:forEach items="${parents }" var="parent">
-			    		<option value="${parent.cid }">${parent.cname }</option>
+			    		<option value="${parent.ca_id }">${parent.ca_name }</option>
 </c:forEach>
 
 					</select>
@@ -155,7 +161,7 @@ function loadChildren() {
 			</tr>
 			<tr>
 				<td>
-					<input type="button" id="btn" class="btn" value="新书上架">
+					<input type="button" id="btn" class="btn" value="商品上架">
 				</td>
 				<td></td>
 				<td></td>

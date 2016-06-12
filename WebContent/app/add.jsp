@@ -19,7 +19,10 @@
 <%-- <link rel="stylesheet" type="text/css" href="<c:url value='/app/css/add.css'/>"> --%>
 
 
+<link rel="stylesheet" type="text/css" href="<c:url value='/jquery/jquery.datepick.css'/>">
 <script type="text/javascript" src="<c:url value='/jquery/jquery-1.5.1.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/jquery/jquery.datepick.js'/>"></script>
+<script type="text/javascript" src="<c:url value='/jquery/jquery.datepick-zh-CN.js'/>"></script>
 
 
 <script type="text/javascript">
@@ -63,7 +66,8 @@ function loadChildren() {
 	$.ajax({
 		async:true,
 		cache:false,
-		url:"/netstore/AdminItemsServlet",
+		
+		url:"${pageContext.request.contextPath}/AdminItemsServlet",
 		data:{method:"ajaxFindChildren", ca_pid:ca_pid},
 		
 		type:"POST",

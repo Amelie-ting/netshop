@@ -182,12 +182,12 @@
   </servlet-mapping>
   
     <servlet>
-    <servlet-name>AdItemServlet</servlet-name>
-    <servlet-class>com.netshop.servlet.AdItemServlet</servlet-class>
+    <servlet-name>AdminItemServlet</servlet-name>
+    <servlet-class>com.netshop.servlet.AdminItemServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>AdItemServlet</servlet-name>
-    <url-pattern>/admin/AdItemServlet</url-pattern>
+    <servlet-name>AdminItemServlet</servlet-name>
+    <url-pattern>/admin/AdminItemServlet</url-pattern>
   </servlet-mapping>
   
   <error-page>
