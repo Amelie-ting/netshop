@@ -45,7 +45,7 @@ public class UploadServlet extends HttpServlet {
 		 * 2.创建解析器对象
 		 */
 		ServletFileUpload sfu = new ServletFileUpload(factory);
-		sfu.setFileSizeMax(80 * 1024);//设置单个上传的文件上限为80KB
+		sfu.setFileSizeMax(100*80 * 1024);//设置单个上传的文件上限为80KB
 		/*
 		 * 3.解析request得到List<FileItem>
 		 */
@@ -83,6 +83,7 @@ public class UploadServlet extends HttpServlet {
 		 */
 		// 获取文件名
 		FileItem fileItem = fileItemList.get(3);//获取图片
+		System.out.println(fileItem);
 		String filename = fileItem.getName();
 		// 截取文件名，因为部分浏览器上传的绝对路径
 		int index = filename.lastIndexOf("\\");
@@ -121,7 +122,7 @@ public class UploadServlet extends HttpServlet {
 		// 2. 通过ImageIcon得到Image对象
 		Image image = icon.getImage();
 		// 3. 获取宽高来进行校验
-		if(image.getWidth(null) > 350 || image.getHeight(null) > 350) {
+		if(image.getWidth(null) > 1050 || image.getHeight(null) > 1050) {
 			error("您上传的图片尺寸超出了350*350！", request, response);
 			destFile.delete();//删除图片
 			return;
@@ -137,7 +138,7 @@ public class UploadServlet extends HttpServlet {
 		
 		// 保存成功信息转发到msg.jsp
 		request.setAttribute("msg", "添加商品成功！");
-		request.getRequestDispatcher("/app/msg.jsp").forward(request, response);
+		request.getRequestDispatcher("/adminjsps/msg.jsp").forward(request, response);
 	}
 	
 	/*
@@ -147,7 +148,7 @@ public class UploadServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setAttribute("msg", msg);
 		//request.setAttribute("parents", new CategoryService().findParents());//锟??鏈変竴绾у垎锟??
-		request.getRequestDispatcher("/app/add.jsp").
+		request.getRequestDispatcher("/adminjsps/admin/book/add.jsp").
 				forward(request, response);
 	}
 	

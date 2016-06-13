@@ -129,7 +129,7 @@ public class AdminItemServlet extends BaseServlet {
 		List<Category> children = categoryService.findChildren(pid);
 		String json = toJson(children);
 		resp.getWriter().print(json);
-		System.out.println(json);
+		//System.out.println(json);
 		return null;
 	}
 	

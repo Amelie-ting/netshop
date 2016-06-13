@@ -158,9 +158,9 @@ public class ItemsDaoImpl implements ItemsDao {
 	@Override
 	public void add(Items item) throws SQLException {
 		String sql = "insert into items(item_name,item_caid,item_gdate,item_descn,"
-				+ "item_price,purprice,item_wid,item_pic) values(?,?,?,?,?,?,?,?)";
+				+ "item_price,purprice,item_wid,item_pic,barcode,item_stock) values(?,?,?,?,?,?,?,?,?,?)";
 		Object[] params = { item.getItem_name(), item.getItem_caid(), item.getItem_gdate(), item.getItem_descn(),
-				item.getItem_price(), item.getPurprice(), item.getItem_wid(), item.getItem_pic() };
+				item.getItem_price(), item.getPurprice(), item.getItem_wid(), item.getItem_pic() ,item.getBarcode(),item.getItem_stock()};
 		qr.update(sql, params);
 	}
 

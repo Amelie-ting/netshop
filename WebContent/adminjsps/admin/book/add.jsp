@@ -107,7 +107,7 @@ function loadChildren() {
   <body>
   <div>
    <p style="font-weight: 900; color: red;">${msg }</p>
-   <form action="<c:url value='/admin/AdminItemServlet'/>" enctype="multipart/form-data" method="post" id="form">
+   <form action="<%= request.getContextPath() %>/AdminAddItemsServlet" enctype="multipart/form-data" method="post" id="form">
     <div>
 	    <ul>
 	    	<li>书名：　<input id="bname" type="text" name="bname" value="Spring实战(第3版)（In Action系列中最畅销的Spring图书，近十万读者学习Spring的共同选择）" style="width:500px;"/></li>

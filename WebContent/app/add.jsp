@@ -67,7 +67,7 @@ function loadChildren() {
 		async:true,
 		cache:false,
 		
-		url:"${pageContext.request.contextPath}/AdminItemsServlet",
+		url:"/netshop/adminItemsServlet",
 		data:{method:"ajaxFindChildren", ca_pid:ca_pid},
 		
 		type:"POST",
@@ -75,12 +75,12 @@ function loadChildren() {
 		success:function(arr) {
 			
 			// 3. 得到cid，删除它的内容
-			$("#ca_id").empty();//删除元素的子元素
-			$("#ca_id").append($("<option>====请选择2级分类====</option>"));//4.添加头
+			$("#item_caid").empty();//删除元素的子元素
+			$("#item_caid").append($("<option>====请选择2级分类====</option>"));//4.添加头
 			// 5. 循环遍历数组，把每个对象转换成<option>添加到cid中
 			for(var i = 0; i < arr.length; i++) {
 				var option = $("<option>").val(arr[i].ca_id).text(arr[i].ca_name);
-				$("#ca_id").append(option);
+				$("#item_caid").append(option);
 			}
 		}
 	});
@@ -119,14 +119,25 @@ function loadChildren() {
         <input id="item_wid" type="text" name="item_wid" >
       </td>
     </tr>
-    <tr valign="middle">
+    <!-- <tr valign="middle">
       <td>商品类别id:
         <input id="item_caid" type="text" name="item_caid" >
       </td>
-    </tr>
+    </tr> -->
     <tr valign="middle">
       <td>商品描述:
         <input id="item_descn" type="text" name="item_descn" >
+      </td>
+    </tr>
+      <tr valign="middle">
+      <td>库存数量:
+        <input id="item_stock" type="text" name="item_stock" >
+      </td>
+    </tr>
+   <tr>
+    <tr valign="middle">
+      <td>条形码:
+        <input id="barcode" type="text" name="barcode" >
       </td>
     </tr>
    <tr>
@@ -143,7 +154,7 @@ function loadChildren() {
 					</select>
 				</td>
 				<td>
-					二级分类：<select name="ca_id" id="ca_id">
+					二级分类：<select name="item_caid" id="item_caid">
 						<option value="">====请选择2级分类====</option>
 					</select>
 				</td>
