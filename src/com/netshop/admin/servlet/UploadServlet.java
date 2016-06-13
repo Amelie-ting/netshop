@@ -147,7 +147,7 @@ public class UploadServlet extends HttpServlet {
 	private void error(String msg, HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setAttribute("msg", msg);
-		//request.setAttribute("parents", new CategoryService().findParents());//�??有一级分�??
+		//request.setAttribute("parents", new CategoryService().findParents());
 		request.getRequestDispatcher("/adminjsps/admin/book/add.jsp").
 				forward(request, response);
 	}

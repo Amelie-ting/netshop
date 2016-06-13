@@ -86,16 +86,40 @@ public class AdminItemServlet extends BaseServlet {
 		return "f:/adminsjsps/admin/book/list.jsp";
 	}
 
+	
 	/**
-	 * 按照id进行载入
-	 * 
+	 * 加载图书
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
 	 */
-	public String load(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String bid = req.getParameter("bid");// 获取链接的参数bid
+	public String load(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		/*
+		 * 1. 获取bid，得到Book对象，保存之
+		 */
+		String bid = req.getParameter("bid");
 		int id = Integer.parseInt(bid);
-		Items items = itemsService.loadByIid(id);// 通过bid得到items对象
-		req.setAttribute("item", items);// 保存到req中
-		return "f:/adminjsps/admin/book/desc.jsp";// 转发到desc.jsp
+		Items items=itemsService.loadByIid(id);
+		req.setAttribute("item", items);
+		
+		/*
+		 * 2. 获取所有一级分类，保存之
+		 */
+		req.setAttribute("parents", categoryService.findParents());
+		/*
+		 * 3. 获取当前图书所属的一级分类下所有2级分类
+		 */
+		String pid =items.getCategory().getParent().getCa_id();
+		System.out.println(items.getItem_name());
+		req.setAttribute("children", categoryService.findChildren(pid));
+		
+		/*
+		 * 4. 转发到desc.jsp显示
+		 */
+		return "f:/adminjsps/admin/book/desc.jsp";
 	}
 	
 	

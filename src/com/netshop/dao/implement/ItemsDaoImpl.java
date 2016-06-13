@@ -54,7 +54,7 @@ public class ItemsDaoImpl implements ItemsDao {
 	 */
 	@Override
 	public Items findByIid(int Iid) throws SQLException {
-		String sql = "SELECT * FROM items i,category c where c.ca_id=i.item_caid  AND item_id=?";
+		String sql = "SELECT * FROM items i,category c where c.ca_id=i.item_caid  AND i.item_id=?";
 		
 		Map<String, Object> map = qr.query(sql, new MapHandler(), Iid);
 		// 把Map中除了ca_id以外的其他属性映射到Items对象中
@@ -63,8 +63,13 @@ public class ItemsDaoImpl implements ItemsDao {
 		Category category = CommonUtils.toBean(map, Category.class);
 		// 两者建立关系
 		item.setCategory(category);
-
+		if(map.get("ca_pid")!=null){
+		Category parent=new Category();
+		parent.setCa_id((String)map.get("ca_pid"));
+		category.setParent(parent);
+		}
 		return item;
+	
 	}
 
 	/**

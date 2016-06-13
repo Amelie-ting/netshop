@@ -38,7 +38,7 @@ $(function() {
 	*/
 	<c:forEach items="${parents}" var="parents">
 	  <c:forEach items="${parents.children}" var="child">
-		bar.add("${parents.ca_name}", "${child.ca_name}", "/netstore/admin/AdItemServlet?method=findByCategory&ca_id=${child.ca_id}", "body");
+		bar.add("${parents.ca_name}", "${child.ca_name}", "/netstore/admin/AdminItemServlet?method=findByCategory&ca_id=${child.ca_id}", "body");
 	  </c:forEach>
 	</c:forEach>
 	

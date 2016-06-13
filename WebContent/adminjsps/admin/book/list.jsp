@@ -32,11 +32,11 @@
 			<li>
 				<div class="inner">
 					<a 
-						href="<c:url value='/admin/AdItemServlet?method=load&bid=${item.item_id }'/>"><img
+						href="<c:url value='/admin/AdminItemServlet?method=load&bid=${item.item_id }'/>"><img
 						src="<c:url value='/${item.item_pic }'/>" border="0" /></a>
 					<p>
 						<a id="itemname" title="${item.item_name }"
-							href="<c:url value='/admin/AdItemServlet?method=load&bid=${item.item_id }'/>">${item.item_name }</a>
+							href="<c:url value='/admin/AdminItemServlet?method=load&bid=${item.item_id }'/>">${item.item_name }</a>
 					</p>
 					<p class="price">
 						<span class="price_n">&yen;${item.item_price}</span>

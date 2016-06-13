@@ -53,23 +53,27 @@ function loadChildren() {
 	  6. 循环数组，把数组中每个对象转换成一个<option>添加到cid中
 	*/
 	// 1. 获取pid
-	var pid = $("#pid").val();
+	var ca_pid = $("#ca_pid").val();
+	  
 	// 2. 发送异步请求
 	$.ajax({
 		async:true,
 		cache:false,
-		url:"/goods/admin/AdminBookServlet",
-		data:{method:"ajaxFindChildren", pid:pid},
+		
+		url:"/netstore/adminItemsServlet",
+		data:{method:"ajaxFindChildren", ca_pid:ca_pid},
+		
 		type:"POST",
 		dataType:"json",
 		success:function(arr) {
+			
 			// 3. 得到cid，删除它的内容
-			$("#cid").empty();//删除元素的子元素
-			$("#cid").append($("<option>====请选择2级分类====</option>"));//4.添加头
+			$("#item_caid").empty();//删除元素的子元素
+			$("#item_caid").append($("<option>====请选择2级分类====</option>"));//4.添加头
 			// 5. 循环遍历数组，把每个对象转换成<option>添加到cid中
 			for(var i = 0; i < arr.length; i++) {
-				var option = $("<option>").val(arr[i].cid).text(arr[i].cname);
-				$("#cid").append(option);
+				var option = $("<option>").val(arr[i].ca_id).text(arr[i].ca_name);
+				$("#item_caid").append(option);
 			}
 		}
 	});
@@ -103,7 +107,10 @@ function editForm() {
     <div id="book" style="float:left;">
 	    <ul>
 	    	<li>商品编号：${item.item_id }</li>
-	    	<li>当前价：<span class="price_n">&yen;${item.item_price }</span></li>
+	    	<li>售价：<span class="price_n">&yen;${item.item_price }</span></li>
+	    	<li>进货价：<span class="price_n">&yen;${item.purprice }</span></li>
+	    	<li>条形码：<span class="price_n">${item.barcode }</span></li>
+	    	<li>库存：<span class="price_n">${item.item_stock }</span></li>
 	    </ul>
 		<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
 		<table class="tab">
@@ -133,11 +140,11 @@ function editForm() {
    <div class="sm">&nbsp;</div>
    <form action="<c:url value='/admin/AdminBookServlet'/>" method="post" id="form">
     <input type="hidden" name="method" id="method"/>
-   	<input type="hidden" name="bid" value="${book.bid }"/>
+    	<input type="hidden" name="bid" value="${item.item_id }"/> 
     <img align="top" src="<c:url value='/${item.item_pic }'/>" class="tp"/>
     <div style="float:left;">
 	    <ul>
-	    	<li>书名：　<input id="bname" type="text" name="bname" value="${item.item_name }" style="width:500px;"/></li>
+	    	<li>书名：　<input id="bname" type="text" name="bname" value="${item.item_name}" style="width:500px;"/></li>
 	    	<li>当前价：<input id="currPrice" type="text" name="currPrice" value="${item.item_price }" style="width:50px;"/></li>
 	    </ul>
 		<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
@@ -152,20 +159,21 @@ function editForm() {
 				<input id="press" type="text" name="press" value="${item.item_descn}" style="width:200px;"/>
 				</td>
 			</tr>
-			<tr>
+<tr>
 				<td>
-					一级分类：<select name="pid" id="pid" onchange="loadChildren()">
-						<option value="">==请选择1级分类==</option>
-<c:forEach items="${parents }" var="parent">
-  <option value="${parent.cid }" <c:if test="${book.category.parent.cid eq parent.cid }">selected="selected"</c:if>>${parent.cname }</option>
-</c:forEach>
+					一级分类：<select name="ca_pid" id="ca_pid" onchange="loadChildren()">
+						<option value="">====请选择1级分类====</option>
+				<c:forEach items="${parents }" var="parents">
+			    		<option value="${parents.ca_id }"  <c:if test="${item.category.parent.ca_id eq parents.ca_id }">selected="selected"</c:if>>${parents.ca_name }</option>
+				</c:forEach>
+
 					</select>
 				</td>
 				<td>
-					二级分类：<select name="cid" id="cid">
-						<option value="">==请选择2级分类==</option>
+					二级分类：<select name="item_caid" id="item_caid">
+						<option value="">====请选择2级分类====</option>
 <c:forEach items="${children }" var="child">
-  <option value="${child.ca_id }" <c:if test="${book.category.cid eq child.cid }">selected="selected"</c:if>>${child.cname }</option>
+  	<option value="${child.ca_id }" <c:if test="${item.category.ca_id eq child.ca_id }">selected="selected"</c:if>>${child.ca_name }</option>
 </c:forEach>
 					</select>
 				</td>
