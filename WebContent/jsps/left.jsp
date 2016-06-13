@@ -39,7 +39,7 @@ $(function() {
 	*/
  <c:forEach items="${parents}" var="parents">
   <c:forEach items="${parents.children}" var="child">
-	bar.add("${parents.ca_name}", "${child.ca_name}", "/netshop/itemServlet?method=findByCategory&ca_id=${child.ca_id}", "body");
+	bar.add("${parents.ca_name}", "${child.ca_name}", "/netstore/itemServlet?method=findByCategory&ca_id=${child.ca_id}", "body");
   </c:forEach>
 </c:forEach>
 	

@@ -67,7 +67,7 @@ function loadChildren() {
 		async:true,
 		cache:false,
 		
-		url:"/netshop/adminItemsServlet",
+		url:"/netstore/adminItemsServlet",
 		data:{method:"ajaxFindChildren", ca_pid:ca_pid},
 		
 		type:"POST",

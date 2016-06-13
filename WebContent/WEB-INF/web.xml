@@ -180,8 +180,7 @@
     <servlet-name>AdCategoryServlet</servlet-name>
     <url-pattern>/admin/AdCategoryServlet</url-pattern>
   </servlet-mapping>
-  
-    <servlet>
+  <servlet>
     <servlet-name>AdminItemServlet</servlet-name>
     <servlet-class>com.netshop.servlet.AdminItemServlet</servlet-class>
   </servlet>
@@ -189,7 +188,6 @@
     <servlet-name>AdminItemServlet</servlet-name>
     <url-pattern>/admin/AdminItemServlet</url-pattern>
   </servlet-mapping>
-  
   <error-page>
     <error-code>404</error-code>
     <location>/404error.jsp</location>
