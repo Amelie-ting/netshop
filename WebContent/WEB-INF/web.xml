@@ -204,4 +204,12 @@
     <exception-type>java.lang.NullPointerException </exception-type>
     <location>/error.jsp</location>
   </error-page>
+  <servlet>
+    <servlet-name>TestUploadServlet</servlet-name>
+    <servlet-class>com.netshop.text.TestUploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestUploadServlet</servlet-name>
+    <url-pattern>/testUploadServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

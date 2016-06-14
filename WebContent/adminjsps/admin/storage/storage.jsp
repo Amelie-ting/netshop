@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,6 +22,7 @@ border-length:300px
 <h1><p align="center">欢迎来到仓库管理系统</p></h1>
 
 		<div class="in" style="width: 617px; height: 333px"><p align="center">
+			
 			</p><form action="<%= request.getContextPath()%>/inUpServlet" method="post" enctype="multipart/form-data" style="width: 1094px; position: relative; height: 144px; ">
 	  		上传入库Excel文件：
 	  		<br>

@@ -52,5 +52,13 @@ public interface ItemsDao {
 	 * @throws SQLException
 	 */
 	public void delete(String id) throws SQLException;
+	
+	/**
+	 *根据空，查出入库的新商品
+	 * @param barcode
+	 * @return
+	 * @throws SQLException 
+	 */
+	public List<Items> findByBarcode() throws SQLException ;
 
 }

@@ -33,6 +33,8 @@ public class InUpServlet extends HttpServlet {
 		String filePath = this.getServletContext().getRealPath("/Excel");
 		
 		File file = new File(filePath);
+		
+		
 		if(!file.exists()){
 			file.mkdir();
 		}

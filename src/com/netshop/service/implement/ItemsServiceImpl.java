@@ -115,4 +115,13 @@ public class ItemsServiceImpl implements ItemsService {
 		}
 		
 	}
+
+	@Override
+	public List<Items> findnull() {
+		try {
+			return itemsDao.findByBarcode();
+					} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

@@ -114,18 +114,9 @@ public class ItemServlet extends BaseServlet {
 
 	public String findByBname(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException, SQLException {
-
-		/*
-		 * 1. 得到pc：如果页面传递，使用页面的，如果没传，pc=1
-		 */
-		// int pc = getPc(req);
-		// /*
-		// * 2. 得到url：...
-		// */
-		// String url = getUrl(req);
-		/*
-		 * 3. 获取查询条件，本方法就是cid，即分类的id
-		 */
+		
+		req.setCharacterEncoding("UTF-8");
+		
 		String bname = req.getParameter("bname");
 		/*
 		 * 3.5 实例化criteriaitems,直接传入bname

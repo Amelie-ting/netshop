@@ -30,4 +30,7 @@ public interface ItemsService {
 	public int findBookCountByCategory(String cid) ;
 	
 	public void delete(String id);
+	
+	public List<Items> findnull();
+
 }

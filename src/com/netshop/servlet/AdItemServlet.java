@@ -8,6 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.junit.Test;
+
+import com.netshop.dao.ItemsDao;
+import com.netshop.dao.implement.ItemsDaoImpl;
 import com.netshop.model.Category;
 import com.netshop.model.CriteriaItems;
 import com.netshop.model.Items;
@@ -24,6 +29,7 @@ public class AdItemServlet extends BaseServlet {
 	private static final long serialVersionUID = 1L;
 	private ItemsService itemsService = new ItemsServiceImpl();
 	private CategoryService categoryService=new CategoryServiceImpl();
+	private ItemsDao itemsDao=new ItemsDaoImpl();
 	/**
 	 * 分类查询显示方法，但是此方法暂时还没有进行分页
 	 * 
@@ -155,4 +161,11 @@ public class AdItemServlet extends BaseServlet {
 		sb.append("]");
 		return sb.toString();
 	}
+	
+	private String findnull(HttpServletRequest req, HttpServletResponse resp){
+		List<Items> items=itemsService.findnull();
+		req.setAttribute("nullItems", items);
+		return "f:/adminjsps/admin/book/add.jsp";
+	}
+
 }

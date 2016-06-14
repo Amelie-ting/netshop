@@ -190,5 +190,14 @@ public class ItemsDaoImpl implements ItemsDao {
 		qr.update(sql, id);
 		
 	}
+
+	@Override
+	public List<Items> findByBarcode() throws SQLException {
+		String sql = "SELECT * FROM items i where i.item_name is  NULL";
+		List<Map<String, Object>> mapList = qr.query(sql, new MapListHandler());
+		return toCategoryList(mapList);
+	}
+
+	
 	
 }
