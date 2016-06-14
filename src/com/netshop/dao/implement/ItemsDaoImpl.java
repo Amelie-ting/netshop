@@ -175,4 +175,20 @@ public class ItemsDaoImpl implements ItemsDao {
 		Number cnt = (Number)qr.query(sql, new ScalarHandler(), cid);
 		return cnt == null ? 0 : cnt.intValue();
 	}
+
+	@Override
+	public void edit(Items items) throws SQLException {
+		String sql="update items set item_name=?,item_caid=?,item_descn=?,item_price=?,purprice=?,item_stock=? where item_id=?";
+		Object[] params={items.getItem_name(),items.getItem_caid(),items.getItem_descn(),items.getItem_price(),items.getPurprice(),items.getItem_stock(),items.getItem_id()};
+		qr.update(sql, params);
+	
+	}
+
+	@Override
+	public void delete(String id) throws SQLException {
+		String sql="delete from items where item_id=?";
+		qr.update(sql, id);
+		
+	}
+	
 }

@@ -138,14 +138,19 @@ function editForm() {
   
   <div id='formDiv'>
    <div class="sm">&nbsp;</div>
-   <form action="<c:url value='/admin/AdminBookServlet'/>" method="post" id="form">
+   <form action="<c:url value='/admin/AdminItemServlet'/>" method="post" id="form">
     <input type="hidden" name="method" id="method"/>
-    	<input type="hidden" name="bid" value="${item.item_id }"/> 
+    	<input type="hidden" name="item_id" value="${item.item_id }"/> 
     <img align="top" src="<c:url value='/${item.item_pic }'/>" class="tp"/>
     <div style="float:left;">
 	    <ul>
-	    	<li>书名：　<input id="bname" type="text" name="bname" value="${item.item_name}" style="width:500px;"/></li>
-	    	<li>当前价：<input id="currPrice" type="text" name="currPrice" value="${item.item_price }" style="width:50px;"/></li>
+	    	<li>商品编号：${item.item_id }</li>
+	    	<li>商品条形码:${item.barcode }</li>
+	    	<li>商品名：　<input id="item_name" type="text" name="item_name" value="${item.item_name}" style="width:500px;"/></li>
+	    	<li>单价：<input id="item_price" type="text" name="item_price" value="${item.item_price }" style="width:50px;"/></li>
+	    	<li>进货价：<input id="purprice" type="text" name="purprice" value="${item.item_price }" style="width:50px;"/></li>
+	    	<li>库存数量：<input id="item_stock" type="text" name="item_stock" value="${item.item_stock }" style="width:50px;"/></li>
+	    	
 	    </ul>
 		<hr style="margin-left: 50px; height: 1px; color: #dcdcdc"/>
 		<table class="tab">
@@ -156,7 +161,7 @@ function editForm() {
 			</tr>
 			<tr>
 				<td colspan="3">
-				<input id="press" type="text" name="press" value="${item.item_descn}" style="width:200px;"/>
+				<input id="item_descn" type="text" name="item_descn" value="${item.item_descn}" style="width:200px;"/>
 				</td>
 			</tr>
 <tr>

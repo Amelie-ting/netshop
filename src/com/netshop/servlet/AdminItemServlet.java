@@ -1,14 +1,17 @@
 package com.netshop.servlet;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.netshop.commons.CommonUtils;
 import com.netshop.model.Category;
 import com.netshop.model.CriteriaItems;
 import com.netshop.model.Items;
@@ -85,7 +88,31 @@ public class AdminItemServlet extends BaseServlet {
 
 		return "f:/adminsjsps/admin/book/list.jsp";
 	}
-
+	/**
+	 * 商品的编辑功能
+	 * @param req
+	 * @param resp
+	 * @return
+	 * @throws ServletException
+	 * @throws IOException
+	 */
+	public String edit(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		/*
+		 * 1. 把表单数据封装到Book对象中
+		 * 2. 封装cid到Category中
+		 * 3. 把Category赋给Book
+		 * 4. 调用service完成工作
+		 * 5. 保存成功信息，转发到msg.jsp
+		 */
+		Map map = req.getParameterMap();
+		Items items=CommonUtils.toBean(map, Items.class);
+		Category category = CommonUtils.toBean(map, Category.class);
+		items.setCategory(category);
+		itemsService.edit(items);
+		req.setAttribute("msg", "修改图书成功！");
+		return "f:/adminjsps/msg.jsp";
+	}
 	
 	/**
 	 * 加载图书
@@ -113,7 +140,7 @@ public class AdminItemServlet extends BaseServlet {
 		 * 3. 获取当前图书所属的一级分类下所有2级分类
 		 */
 		String pid =items.getCategory().getParent().getCa_id();
-		System.out.println(items.getItem_name());
+		//System.out.println(items.getItem_name());
 		req.setAttribute("children", categoryService.findChildren(pid));
 		
 		/*
@@ -182,5 +209,21 @@ public class AdminItemServlet extends BaseServlet {
 		return sb.toString();
 	}
 	
+	public String delete(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String bid = req.getParameter("item_id");
+		
+		int id=Integer.valueOf(bid);
+		/*
+		 * 删除图片
+		 */
 
+		Items items=itemsService.loadByIid(id);
+		String savepath = this.getServletContext().getRealPath("/");//获取真实的路径
+		new File(savepath, items.getItem_pic()).delete();//删除文件
+		itemsService.delete(bid);
+		
+		req.setAttribute("msg", "删除图书成功！");
+		return "f:/adminjsps/msg.jsp";
+	}
 }

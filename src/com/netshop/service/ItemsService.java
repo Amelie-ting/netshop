@@ -24,5 +24,10 @@ public interface ItemsService {
 	public List<Items> findByCategory(int cid);
 	
 	//查询二级分类下的商品个数
+	
+	public void edit(Items items);
+	
 	public int findBookCountByCategory(String cid) ;
+	
+	public void delete(String id);
 }

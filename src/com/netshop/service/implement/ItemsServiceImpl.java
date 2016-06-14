@@ -93,4 +93,26 @@ public class ItemsServiceImpl implements ItemsService {
 			throw new RuntimeException(e);
 		}
 	}
+
+	@Override
+	public void edit(Items items) {
+		try {
+			itemsDao.edit(items);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+		
+	}
+
+	@Override
+	public void delete(String id) {
+		try {
+			itemsDao.delete(id);
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			throw new RuntimeException(e);
+		}
+		
+	}
 }
