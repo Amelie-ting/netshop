@@ -17,6 +17,7 @@ import com.netshop.dao.ItemsDao;
 import com.netshop.jdbc.DAO;
 import com.netshop.model.Category;
 import com.netshop.model.CriteriaItems;
+import com.netshop.model.ItemBar;
 import com.netshop.model.Items;
 import com.netshop.pager.Expression;
 import com.netshop.pager.PageBean;
@@ -196,6 +197,23 @@ public class ItemsDaoImpl implements ItemsDao {
 		String sql = "SELECT * FROM items i where i.item_name is  NULL";
 		List<Map<String, Object>> mapList = qr.query(sql, new MapListHandler());
 		return toCategoryList(mapList);
+	}
+
+	@Override
+	public ItemBar findByItemBar(int item_id) throws SQLException {
+		String sql = "SELECT item_id,barcode,item_stock FROM items  WHERE item_id=?";
+		Map<String, Object> map = qr.query(sql, new MapHandler(), item_id);
+		
+		ItemBar itemBar = CommonUtils.toBean(map, ItemBar.class);
+		return itemBar;
+	}
+
+	@Override
+	public int findIdByBar(String barcode) throws SQLException {
+		String sql="SELECT item_id FROM `items` WHERE barcode=?";
+//		Number number = (Number) qr.query(sql, new ScalarHandler(), barcode);
+		int number =  (int) qr.query(sql, new ScalarHandler(), barcode);
+		return number;
 	}
 
 	

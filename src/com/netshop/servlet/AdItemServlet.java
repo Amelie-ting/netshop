@@ -165,7 +165,7 @@ public class AdItemServlet extends BaseServlet {
 	private String findnull(HttpServletRequest req, HttpServletResponse resp){
 		List<Items> items=itemsService.findnull();
 		req.setAttribute("nullItems", items);
-		return "f:/adminjsps/admin/book/add.jsp";
+		return "f:/adminjsps/admin/book/findnull.jsp";
 	}
 
 }

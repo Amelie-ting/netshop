@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.netshop.commons.CommonUtils;
 import com.netshop.model.Category;
 import com.netshop.model.CriteriaItems;
+import com.netshop.model.ItemBar;
 import com.netshop.model.Items;
 import com.netshop.service.CategoryService;
 import com.netshop.service.ItemsService;
@@ -225,5 +226,26 @@ public class AdminItemServlet extends BaseServlet {
 		
 		req.setAttribute("msg", "删除图书成功！");
 		return "f:/adminjsps/msg.jsp";
+	}
+	
+	public String findnull(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException{
+		List<Items> items=itemsService.findnull();
+		req.setAttribute("nullItems", items);
+		return "f:/adminjsps/admin/book/findnull.jsp";
+	}
+	
+	public String findByItemBar(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException{
+		
+		String bid = req.getParameter("bid");
+		int id=Integer.valueOf(bid);
+		ItemBar itemBar=itemsService.findByItemBar(id);
+		req.setAttribute("nullItems", itemBar);
+		List<Category> parents = categoryService.findParents();
+		req.setAttribute("parents", parents);
+		//删除这个item
+		
+		return "f:/adminjsps/admin/book/addEdit.jsp";
 	}
 }

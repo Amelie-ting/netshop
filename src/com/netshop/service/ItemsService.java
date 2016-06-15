@@ -3,6 +3,7 @@ package com.netshop.service;
 import java.util.List;
 
 import com.netshop.model.CriteriaItems;
+import com.netshop.model.ItemBar;
 import com.netshop.model.Items;
 
 public interface ItemsService {
@@ -31,6 +32,24 @@ public interface ItemsService {
 	
 	public void delete(String id);
 	
+	/**
+	 * 查所有的新入库
+	 * @return
+	 */
 	public List<Items> findnull();
+	
+	/**
+	 * 根据itemid查itembar类，用于addedit界面
+	 * @param item_id
+	 * @return
+	 */
+	public ItemBar findByItemBar(int item_id);
+	
+	/**
+	 * 通过条形码查商品id，用于addedit删除空的item
+	 * @param barcode
+	 * @return
+	 */
+	public int findIdByBar(String barcode) ;
 
 }

@@ -7,6 +7,7 @@ import com.netshop.dao.ItemsDao;
 import com.netshop.dao.implement.ItemsDaoImpl;
 
 import com.netshop.model.CriteriaItems;
+import com.netshop.model.ItemBar;
 import com.netshop.model.Items;
 
 import com.netshop.service.ItemsService;
@@ -120,6 +121,24 @@ public class ItemsServiceImpl implements ItemsService {
 	public List<Items> findnull() {
 		try {
 			return itemsDao.findByBarcode();
+					} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public ItemBar findByItemBar(int item_id) {
+		try {
+			return itemsDao.findByItemBar(item_id);
+					} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public int findIdByBar(String barcode) {
+		try {
+			return itemsDao.findIdByBar(barcode);
 					} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

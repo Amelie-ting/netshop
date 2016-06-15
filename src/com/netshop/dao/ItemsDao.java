@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.netshop.model.Category;
 import com.netshop.model.CriteriaItems;
+import com.netshop.model.ItemBar;
 import com.netshop.model.Items;
 import com.netshop.pager.PageBean;
 
@@ -60,5 +61,16 @@ public interface ItemsDao {
 	 * @throws SQLException 
 	 */
 	public List<Items> findByBarcode() throws SQLException ;
+	
+	
+	/**
+	 * ≤È’“itembar
+	 * @return
+	 * @throws SQLException 
+	 */
+	public ItemBar findByItemBar(int item_id) throws SQLException;
+	
+	
+	public int findIdByBar(String barcode) throws SQLException;
 
 }
