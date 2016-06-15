@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html;charset=gb2312"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
@@ -42,15 +42,15 @@
 		margin: 0px;
 	}
 </style>
+
   </head>
   
   <body>
-    <form action="<c:url value='/itemServlet'/>" method="get" target="body" id="form1">
+    <form action="<c:url value='/itemServlet'/>" method="post" target="body" id="form1">
     	<input type="hidden" name="method" value="findByBname"/>
-    	<input type="text" name="bname"/>
+    	<input type="text" name="bname" />
     	<span>
     		<a href="javascript:document.getElementById('form1').submit();"><img align="top" border="0" src="../images/btn.jpg"/></a>
-    		
     	</span>
     </form>
     

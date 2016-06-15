@@ -1,6 +1,7 @@
 package com.netshop.servlet;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -115,9 +116,10 @@ public class ItemServlet extends BaseServlet {
 	public String findByBname(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException, SQLException {
 		
-		req.setCharacterEncoding("UTF-8");
 		
 		String bname = req.getParameter("bname");
+		
+
 		/*
 		 * 3.5 实例化criteriaitems,直接传入bname
 		 */
