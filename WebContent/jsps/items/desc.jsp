@@ -32,6 +32,7 @@
 			<ul>
 				<li>商品编号：${item.item_id }</li>
 				<li>价格：<span class="price_n">&yen;${item.item_price }</span></li>
+				<li>商品库存：<strong>${item.item_stock }</strong> </li>
 			</ul>
 			<hr class="hr1" />
 			

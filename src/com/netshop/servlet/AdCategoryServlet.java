@@ -205,7 +205,7 @@ public class AdCategoryServlet extends BaseServlet {
 		String cid = req.getParameter("cid");
 		int cnt = itemsService.findBookCountByCategory(cid);
 		if(cnt > 0) {
-			req.setAttribute("msg", "该分类下还存在图书，不能删除！");
+			req.setAttribute("msg", "该分类下还存在商品，不能删除！");
 			return "f:/adminjsps/msg.jsp";
 		} else {
 			categoryService.delete(cid);

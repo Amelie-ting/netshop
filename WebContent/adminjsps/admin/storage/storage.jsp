@@ -7,16 +7,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-
-<style>
-.in{
-border:3px solid #000;
-
-border-length:300px
-
-}
-</style>
-
 </head>
 <body>
 <h1><p align="center">欢迎来到仓库管理系统</p></h1>
@@ -32,22 +22,14 @@ border-length:300px
 			<br>	
 	  		<input type="submit" value="提交" style="width: 211px; ">
 	  		${result1}
-	  		</form>
-	  		
+	  		</form>	
 	  		<form action="<%= request.getContextPath()%>/inProServlet" method="post" enctype="multipart/form-data">
   			<input type="submit" value="开始进行入库数据处理" style="width: 216px; ">
-  			<br>
   			${result2}
   			</form>							
-		</div>
-			<br>
-			<br>
-			<br>
-			<br>
-		<div class="out" >
+			<hr style="height:3px;border:none;border-top:3px double red;" />
 			<form action="<%= request.getContextPath()%>/outUpServlet" method="post" enctype="multipart/form-data" style="width: 1094px; position: relative; height: 144px">
   			上传出库Excel文件：
-  			
 			<br>
 			<br>
 			<input type="file" name="myfile1" style="width: 310px; "><br>

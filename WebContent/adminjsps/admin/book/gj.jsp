@@ -24,26 +24,21 @@
   </head>
   
   <body>
-  <form action="<c:url value='/admin/AdminBookServlet'/>" method="get">
-  	<input type="hidden" name="method" value="findByCombination"/>
+  	<br>
+	<br>
+	<br>
+	<br>
+  <form action="<%= request.getContextPath() %>/admin/AdminSearchServlet" method="post">
+  	
 <table align="center">
 	<tr>
-		<td>书名：</td>
-		<td><input type="text" name="bname"/></td>
-	</tr>
-	<tr>
-		<td>作者：</td>
-		<td><input type="text" name="author"/></td>
-	</tr>
-	<tr>
-		<td>出版社：</td>
-		<td><input type="text" name="press"/></td>
+		<td>搜索：</td>
+		<td><input type="text" name="name"/></td>
 	</tr>
 	<tr>
 		<td>&nbsp;</td>
 		<td>
-			<input type="submit" value="搜　　索"/>
-			<input type="reset" value="重新填写"/>
+			 <input type="submit" value="搜索" />
 		</td>
 	</tr>
 </table>

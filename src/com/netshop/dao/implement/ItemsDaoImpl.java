@@ -131,7 +131,7 @@ public class ItemsDaoImpl implements ItemsDao {
 	 * @throws SQLException
 	 */
 	@Override
-	public List<Items> findByCategory(int cid) throws SQLException {
+	public List<Items> findByCategory(String cid) throws SQLException {
 		String sql = "select * from category c,items i where c.ca_id=i.item_caid  and ca_id=?";
 		List<Map<String, Object>> mapList = qr.query(sql, new MapListHandler(), cid);
 		return toCategoryList(mapList);
@@ -214,6 +214,14 @@ public class ItemsDaoImpl implements ItemsDao {
 //		Number number = (Number) qr.query(sql, new ScalarHandler(), barcode);
 		int number =  (int) qr.query(sql, new ScalarHandler(), barcode);
 		return number;
+	}
+
+	@Override
+	public Items findItemByBarcode(String barcode) throws SQLException {
+		String sql = "select * from items where barcode=?";
+		Map<String, Object> map = qr.query(sql, new MapHandler(), barcode);
+		Items items=CommonUtils.toBean(map, Items.class);
+		return items;
 	}
 
 	

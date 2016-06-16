@@ -50,14 +50,14 @@ public class UpdatePassword extends HttpServlet {
 			request.setAttribute("msg", "两次密码输入不一致");
 			request.getRequestDispatcher("jsps/user/pwd.jsp").forward(request, response);
 		}
-		if(old!=user.getU_password()){
+		if(!old.equals(user.getU_password())){
 			request.setAttribute("msg", "旧密码不正确，请重新输入！");
-			request.getRequestDispatcher("jsps/user/login.jsp").forward(request, response);
+			request.getRequestDispatcher("jsps/user/pwd.jsp").forward(request, response);
 		}else {
 			try {
 				userService.updatePassword(user.getU_id(), new1, old);
-				request.setAttribute("msg", "修改密码成功啦");
-				request.getRequestDispatcher("jsps/user/pwd.jsp").forward(request, response);
+				request.setAttribute("msg", "修改密码成功啦,请重新登陆");
+				request.getRequestDispatcher("jsps/user/login.jsp").forward(request, response);
 
 			} catch (Exception e) {
 				// TODO: handle exception

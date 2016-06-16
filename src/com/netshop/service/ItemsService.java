@@ -22,7 +22,7 @@ public interface ItemsService {
 	public void add(Items item);
 
 	// 按商品类别id加载商品
-	public List<Items> findByCategory(int cid);
+	public List<Items> findByCategory(String cid);
 	
 	//查询二级分类下的商品个数
 	
@@ -51,5 +51,7 @@ public interface ItemsService {
 	 * @return
 	 */
 	public int findIdByBar(String barcode) ;
+	
+	public Items findItemByBarcode(String barcode) ;
 
 }

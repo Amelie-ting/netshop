@@ -188,6 +188,20 @@
     <servlet-name>AdminItemServlet</servlet-name>
     <url-pattern>/admin/AdminItemServlet</url-pattern>
   </servlet-mapping>
+  
+  
+    <servlet>
+    <servlet-name>AdminSearchServlet</servlet-name>
+    <servlet-class>com.netshop.admin.servlet.AdminSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminSearchServlet</servlet-name>
+    <url-pattern>/admin/AdminSearchServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
   <error-page>
     <error-code>404</error-code>
     <location>/404error.jsp</location>
@@ -212,7 +226,4 @@
     <servlet-name>AdminAddEditServlet</servlet-name>
     <url-pattern>/adminAddEditServlet</url-pattern>
   </servlet-mapping>
-  
-  
-  
 </web-app>

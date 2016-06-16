@@ -148,7 +148,7 @@ function editForm() {
 	    	<li>商品条形码:${item.barcode }</li>
 	    	<li>商品名：　<input id="item_name" type="text" name="item_name" value="${item.item_name}" style="width:500px;"/></li>
 	    	<li>单价：<input id="item_price" type="text" name="item_price" value="${item.item_price }" style="width:50px;"/></li>
-	    	<li>进货价：<input id="purprice" type="text" name="purprice" value="${item.item_price }" style="width:50px;"/></li>
+	    	<li>进货价：<input id="purprice" type="text" name="purprice" value="${item.purprice }" style="width:50px;"/></li>
 	    	<li>库存数量：<input id="item_stock" type="text" name="item_stock" value="${item.item_stock }" style="width:50px;"/></li>
 	    	
 	    </ul>

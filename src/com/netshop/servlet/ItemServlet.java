@@ -89,11 +89,11 @@ public class ItemServlet extends BaseServlet {
 		 */
 		String ca_id = req.getParameter("ca_id");
 
-		int id = Integer.parseInt(ca_id);
+	
 		/*
 		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
 		 */
-		List<Items> pb = itemsService.findByCategory(id);
+		List<Items> pb = itemsService.findByCategory(ca_id);
 		/*
 		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
 		 */

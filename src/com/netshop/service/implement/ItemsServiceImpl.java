@@ -61,7 +61,7 @@ public class ItemsServiceImpl implements ItemsService {
 	}
 
 	@Override
-	public List<Items> findByCategory(int cid) {
+	public List<Items> findByCategory(String cid) {
 		try {
 			return itemsDao.findByCategory(cid);
 		} catch (SQLException e) {
@@ -139,6 +139,15 @@ public class ItemsServiceImpl implements ItemsService {
 	public int findIdByBar(String barcode) {
 		try {
 			return itemsDao.findIdByBar(barcode);
+					} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
+
+	@Override
+	public Items findItemByBarcode(String barcode) {
+		try {
+			return itemsDao.findItemByBarcode(barcode);
 					} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}

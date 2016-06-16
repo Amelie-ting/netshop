@@ -35,10 +35,17 @@ public class ItemDaoTest {
 //		System.out.println(itemBar.getItem_id()+" "+itemBar.getItem_stock()+" "+itemBar.getBarcode());
 //	}
 	
+//	@Test
+//	public void findIdByBar() throws SQLException{
+//		int bar=itemsDao.findIdByBar("123456789");
+//		System.out.println(bar);
+//	}
+	
 	@Test
-	public void findIdByBar() throws SQLException{
-		int bar=itemsDao.findIdByBar("123456789");
-		System.out.println(bar);
+	public void test() throws SQLException
+	{
+		Items items=itemsDao.findItemByBarcode("6902083910037");
+		System.out.println(items.getBarcode());
 	}
 
 }

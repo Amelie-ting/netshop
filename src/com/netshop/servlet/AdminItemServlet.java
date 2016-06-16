@@ -44,11 +44,11 @@ public class AdminItemServlet extends BaseServlet {
 
 		String ca_id = req.getParameter("ca_id");
 
-		int id = Integer.parseInt(ca_id);
+		
 		/*
 		 * 4. 使用pc和cid调用service#findByCategory得到PageBean
 		 */
-		List<Items> pb = itemsService.findByCategory(id);
+		List<Items> pb = itemsService.findByCategory(ca_id);
 		/*
 		 * 5. 给PageBean设置url，保存PageBean，转发到/jsps/book/list.jsp
 		 */
@@ -111,7 +111,7 @@ public class AdminItemServlet extends BaseServlet {
 		Category category = CommonUtils.toBean(map, Category.class);
 		items.setCategory(category);
 		itemsService.edit(items);
-		req.setAttribute("msg", "修改图书成功！");
+		req.setAttribute("msg", "修改商品成功！");
 		return "f:/adminjsps/msg.jsp";
 	}
 	
@@ -224,7 +224,7 @@ public class AdminItemServlet extends BaseServlet {
 		new File(savepath, items.getItem_pic()).delete();//删除文件
 		itemsService.delete(bid);
 		
-		req.setAttribute("msg", "删除图书成功！");
+		req.setAttribute("msg", "删除商品成功！");
 		return "f:/adminjsps/msg.jsp";
 	}
 	
@@ -248,4 +248,33 @@ public class AdminItemServlet extends BaseServlet {
 		
 		return "f:/adminjsps/admin/book/addEdit.jsp";
 	}
+	
+	public String search(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException{
+		String name = req.getParameter("bname");
+		//如果它是数字，那么启动条形码搜索
+			if(isNum(name)){
+			
+			Items items=itemsService.findItemByBarcode(name);
+			req.setAttribute("pb",items);
+			return "f:/adminsjsps/admin/book/list.jsp";
+			
+		}
+		//否则进行名字模糊查
+		
+			CriteriaItems cr = new CriteriaItems(name);
+			List<Items> pb = itemsService.Fuzzyquery(cr);
+			req.setAttribute("pb", pb);
+			return "f:/adminsjsps/admin/book/list.jsp";
+		
+	}
+	/**
+	 * 正则表达式，匹配条形码全为数字
+	 * @param str
+	 * @return
+	 */
+	private static boolean isNum(String str){
+		return str.matches("^[-+]?(([0-9]+)([.]([0-9]+))?|([.]([0-9]+))?)$");
+	}
+
 }

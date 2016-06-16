@@ -30,7 +30,7 @@ public interface ItemsDao {
 	public void add(Items item) throws SQLException;
 
 	// 按分类id查找
-	public List<Items> findByCategory(int cid) throws SQLException;
+	public List<Items> findByCategory(String cid) throws SQLException;
 	
 	/**
 	 * 商品的编辑
@@ -70,7 +70,19 @@ public interface ItemsDao {
 	 */
 	public ItemBar findByItemBar(int item_id) throws SQLException;
 	
-	
+	/**
+	 * 通过条形码找这个条形码所在的id
+	 * @param barcode
+	 * @return
+	 * @throws SQLException
+	 */
 	public int findIdByBar(String barcode) throws SQLException;
+	
+	/**
+	 * 根据条形码精确查找item类
+	 * @return
+	 * @throws SQLException 
+	 */
+	public Items findItemByBarcode(String barcode) throws SQLException;
 
 }
